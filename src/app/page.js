@@ -1,12 +1,13 @@
-import Image from "next/image";
+import HeroSection from "@/components/landing/HeroSection";
+import ServicesSection from "@/components/landing/ServicesSection";
+import WhyUsSection from "@/components/landing/WhyUsSection";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start">
-        <h1 className="text-primary">Algo Wave Labs Is Comming Soon...   
-        </h1>
-      </main>
-    </div>
+    <>
+      <HeroSection />
+      <ServicesSection />
+      <WhyUsSection />
+    </>
   );
 }
