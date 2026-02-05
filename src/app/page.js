@@ -18,8 +18,8 @@ export default function HomePage() {
       <Process />
       <Portfolio />
       <Testimonials />
-      <WhyUsSection />
       <CTA/>
+      <WhyUsSection />
     </>
   );
 }
