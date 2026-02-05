@@ -1,3 +1,4 @@
+import ContactPage from "@/components/landing/ContactPage";
 import CTA from "@/components/landing/CTA";
 import HeroSection from "@/components/landing/HeroSection";
 import Marquee from "@/components/landing/Marquee";
@@ -20,6 +21,7 @@ export default function HomePage() {
       <Testimonials />
       <CTA/>
       <WhyUsSection />
+      <ContactPage></ContactPage>
     </>
   );
 }
