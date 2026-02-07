@@ -2,7 +2,15 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Code2, Globe, Layout, Layers } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Globe,
+  Layout,
+  Layers,
+  Box,
+  Activity,
+  Code,
+} from 'lucide-react';
 
 const projects = [
   {
@@ -12,7 +20,8 @@ const projects = [
       'A mission-critical restaurant ecosystem with real-time inventory and automated POS logic.',
     icon: <Globe size={20} className="text-blue-400" />,
     tags: ['Next.js', 'Redux', 'AWS'],
-    imageColor: 'from-blue-600/20 to-indigo-900/20',
+    gradient: 'from-blue-600/30 via-blue-500/5 to-transparent',
+    status: 'Operational',
   },
   {
     title: 'CareerOstad',
@@ -21,127 +30,156 @@ const projects = [
       'AI-powered career guidance portal transforming recruitment with intelligent skill-matching.',
     icon: <Layers size={20} className="text-cyan-400" />,
     tags: ['React', 'Node.js', 'MongoDB'],
-    imageColor: 'from-cyan-600/20 to-teal-900/20',
+    gradient: 'from-cyan-600/30 via-cyan-500/5 to-transparent',
+    status: 'Live System',
   },
   {
     title: 'AlgoWave ERP',
-    category: 'Software Architecture',
+    category: 'Enterprise Suite',
     description:
-      'Enterprise resource planning system designed for high-throughput business automation.',
-    icon: <Layout size={20} className="text-purple-400" />,
-    tags: ['TypeScript', 'Express', 'PostgreSQL'],
-    imageColor: 'from-purple-600/20 to-blue-900/20',
+      'Advanced resource planning system designed for high-throughput business automation.',
+    icon: <Layout size={20} className="text-indigo-400" />,
+    tags: ['TypeScript', 'Express', 'Postgres'],
+    gradient: 'from-indigo-600/30 via-indigo-500/5 to-transparent',
+    status: 'Encrypted',
   },
 ];
 
-export default function Portfolio() {
+const AdvancedPortfolio = () => {
   return (
-    <section className="relative py-32 bg-[#050505] overflow-hidden border-y border-white/5">
-      {/* Background Ambience */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="relative py-32 bg-[#030303] overflow-hidden border-y border-white/5">
+      {/* --- LAYER 1: DYNAMIC BACKGROUND (আপনার UI সেন্স অনুযায়ী) --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Central Core Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/[0.05] blur-[160px] rounded-full opacity-60" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-2 mb-4"
-            >
-              <Code2 size={16} className="text-blue-500" />
-              <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-blue-500">
-                Selected Works
+        {/* Perspective Grid Sync */}
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)`,
+            backgroundSize: '50px 50px',
+            transform:
+              'perspective(1200px) rotateX(60deg) translateY(-100px) scale(2.5)',
+          }}
+        />
+
+        {/* Grainy Noise Overlay */}
+        <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* --- HEADER --- */}
+        <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20 backdrop-blur-md">
+                <Activity size={14} className="text-blue-500 animate-pulse" />
+              </div>
+              <span className="text-[10px] font-black tracking-[0.6em] uppercase text-blue-500/80">
+                Project Repository v2.0
               </span>
-            </motion.div>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4 leading-none">
-              CRAFTING <span className="text-slate-500 italic">DIGITAL</span>{' '}
-              LEGACIES
+            </div>
+
+            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6 leading-none uppercase">
+              Crafting <br />
+              <span className="italic font-extralight text-slate-600">
+                Digital
+              </span>{' '}
+              Legacies.
             </h2>
-            <p className="text-slate-400 text-lg font-light leading-relaxed">
-              We transform complex problems into high-performance software
-              solutions.
-            </p>
-          </div>
+          </motion.div>
 
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: 'rgba(255,255,255,0.05)',
+            }}
             whileTap={{ scale: 0.95 }}
-            className="group flex items-center gap-3 px-6 py-3 border border-white/10 rounded-full hover:bg-white/5 transition-all"
+            className="group flex items-center gap-4 px-8 py-4 bg-white/[0.02] border border-white/10 rounded-full backdrop-blur-xl transition-all mb-4"
           >
-            <span className="text-sm font-bold tracking-widest text-white/80 group-hover:text-white uppercase">
-              Exploration
+            <span className="text-[10px] font-black tracking-widest text-white uppercase">
+              Full Archive
             </span>
-            <ArrowUpRight
-              size={18}
-              className="text-blue-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-            />
+            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white group-hover:rotate-45 transition-transform">
+              <ArrowUpRight size={16} />
+            </div>
           </motion.button>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* --- PROJECTS GRID --- */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group flex flex-col h-full"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="group relative flex flex-col h-full bg-[#0A0A0A]/50 border border-white/10 rounded-[2.5rem] p-5 hover:border-blue-500/30 transition-all duration-500 backdrop-blur-xl overflow-hidden"
             >
-              {/* Image / Visual Container */}
-              <div className="relative aspect-[4/3] rounded-[40px] overflow-hidden bg-[#0a0a0a] border border-white/5 mb-8 group-hover:border-blue-500/30 transition-all duration-500 shadow-2xl">
+              {/* Preview Slot */}
+              <div className="relative aspect-[16/10] rounded-[1.8rem] overflow-hidden bg-[#080808] mb-8 border border-white/5">
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.imageColor} group-hover:scale-110 transition-transform duration-700`}
+                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} group-hover:scale-110 transition-transform duration-1000`}
                 />
 
-                {/* Overlay Icon */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm bg-black/40">
-                  <div className="p-5 bg-white/10 border border-white/20 rounded-full text-white">
-                    <ArrowUpRight size={32} />
-                  </div>
-                </div>
-
                 {/* Status Badge */}
-                <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[10px] font-bold tracking-widest uppercase text-blue-400">
-                  Live System
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                  <span className="text-[8px] font-bold tracking-widest uppercase text-white/90">
+                    {project.status}
+                  </span>
                 </div>
               </div>
 
-              {/* Text Content */}
+              {/* Content */}
               <div className="flex flex-col flex-grow px-2">
-                <div className="flex items-center gap-2 mb-4 text-slate-500">
-                  {project.icon}
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-slate-500 group-hover:text-blue-400 transition-colors">
+                    {project.icon}
+                  </div>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors tracking-tight">
+                <h3 className="text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-white transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
+                <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow font-light">
                   {project.description}
                 </p>
 
-                {/* Tech Stack Tags */}
-                <div className="flex flex-wrap gap-2 pt-6 border-t border-white/5">
+                {/* Tech Matrix Tags */}
+                <div className="flex flex-wrap gap-2 pt-6 border-t border-white/[0.05]">
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 text-[9px] font-bold tracking-widest uppercase rounded-lg bg-blue-500/5 text-blue-400/70 border border-blue-500/10"
+                      className="px-3 py-1 text-[8px] font-mono font-bold tracking-tighter rounded-full bg-white/[0.03] text-slate-500 border border-white/5 group-hover:text-blue-300 transition-all"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
+
+              {/* Bottom Glow */}
+              <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-blue-500/5 blur-[40px] rounded-full group-hover:bg-blue-500/10 transition-all" />
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default AdvancedPortfolio;

@@ -1,103 +1,147 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Calendar, Zap } from 'lucide-react';
 
-export default function CTA() {
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import {
+  ArrowRight,
+  Sparkles,
+  Calendar,
+  Command,
+  ShieldCheck,
+  Cpu,
+} from 'lucide-react';
+
+export default function AdvancedCTA() {
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const yValue = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+  const glowOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.6, 1],
+    [0, 1, 1, 0],
+  );
+
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section
+      ref={containerRef}
+      className="py-20 relative overflow-hidden bg-[#030303] border-b border-white/5"
+    >
+      {/* --- LAYER 1: AMBIENCE --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          style={{ y: yValue, opacity: glowOpacity }}
+          className="absolute top-[-20%] right-[10%] w-[400px] h-[400px] bg-blue-600/[0.05] blur-[120px] rounded-full"
+        />
+
+        {/* Sync Perspective Grid */}
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage: `linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)`,
+            backgroundSize: '40px 40px',
+            transform:
+              'perspective(1000px) rotateX(60deg) translateY(100px) scale(2)',
+          }}
+        />
+      </div>
+
+      {/* --- CONTENT WRAPPER --- */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-[50px] bg-[#0a0a0a] border border-white/5 p-12 md:p-24 overflow-hidden shadow-2xl"
+          className="relative rounded-[2.5rem] bg-white/[0.01] border border-white/5 p-10 md:p-16 overflow-hidden backdrop-blur-2xl"
         >
-          {/* --- ADVANCED BACKGROUND --- */}
-          {/* Dynamic Glows */}
-          <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full animate-pulse" />
-          <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-indigo-600/10 blur-[100px] rounded-full" />
-
-          {/* Grid Pattern Overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+          {/* Internal Refraction */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center text-center">
-            {/* Ultra Badge */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 backdrop-blur-md mb-10"
-            >
-              <Sparkles size={14} className="text-blue-400" />
-              <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-blue-400">
-                Limitless Possibilities
+            {/* Minimal Status Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8">
+              <Cpu size={12} className="text-blue-500" />
+              <span className="text-[8px] font-black tracking-[0.4em] uppercase text-blue-500/80">
+                System Finalization
               </span>
-            </motion.div>
+            </div>
 
-            <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] mb-8">
-              READY TO{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500">
-                ACCELERATE
-              </span>{' '}
-              <br />
-              YOUR VISION?
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6 uppercase">
+              Ready to <br />
+              <span className="italic font-extralight text-slate-600">
+                Accelerate?
+              </span>
             </h2>
 
-            <p className="max-w-2xl text-slate-400 text-lg md:text-xl font-light leading-relaxed mb-12">
-              Join forces with{' '}
-              <span className="text-white font-medium">AlgoWave Labs</span>. We
-              engineer high-performance systems that transform complex logic
-              into scalable global realities.
+            <p className="max-w-md text-slate-500 text-sm font-light leading-relaxed mb-10">
+              Architecting scalable industrial-grade realities. Your future
+              infrastructure starts with a single deployment.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-              {/* Primary Action */}
+            {/* --- ACTION BUTTONS (Smaller & Sleeker) --- */}
+            <div className="flex flex-col sm:flex-row items-center gap-4">
               <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: '0 0 40px rgba(37,99,235,0.4)',
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="px-12 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg flex items-center gap-3 transition-all group"
+                whileHover={{ scale: 1.05, backgroundColor: '#2563eb' }}
+                whileTap={{ scale: 0.98 }}
+                className="group flex items-center gap-3 px-6 py-3.5 bg-blue-600 text-white rounded-xl transition-all"
               >
-                <Calendar size={20} />
-                INITIATE CONSULTATION
+                <Calendar size={16} />
+                <span className="text-[10px] font-black tracking-widest uppercase">
+                  Initiate Deployment
+                </span>
                 <ArrowRight
-                  size={20}
+                  size={16}
                   className="group-hover:translate-x-1 transition-transform"
                 />
               </motion.button>
 
-              {/* Secondary Action */}
               <motion.button
-                whileHover={{ backgroundColor: 'rgba(255,255,255,0.05)' }}
-                className="px-10 py-5 border border-white/10 rounded-2xl font-bold text-lg text-slate-300 flex items-center gap-3 transition-all"
+                whileHover={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-3 px-6 py-3.5 border border-white/10 rounded-xl text-slate-400 transition-all"
               >
-                <Zap size={20} className="text-blue-400" />
-                OUR STACK
+                <Command size={16} />
+                <span className="text-[10px] font-black tracking-widest uppercase">
+                  Core Stack
+                </span>
               </motion.button>
             </div>
 
-            {/* Trust Indicator */}
-            <div className="mt-16 flex items-center gap-6 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
-              <span className="text-[10px] font-mono font-bold tracking-widest text-slate-500">
-                ISO CERTIFIED WORKFLOW
-              </span>
-              <div className="w-1 h-1 rounded-full bg-slate-700" />
-              <span className="text-[10px] font-mono font-bold tracking-widest text-slate-500">
-                SECURE DATA ARCHITECTURE
+            {/* Verification Metadata (Smallest) */}
+            <div className="mt-12 flex items-center gap-6 opacity-40">
+              <div className="flex items-center gap-2">
+                <ShieldCheck size={12} className="text-blue-500" />
+                <span className="text-[7px] font-mono tracking-widest uppercase text-white">
+                  Encrypted
+                </span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-slate-800" />
+              <div className="flex items-center gap-2">
+                <Sparkles size={12} className="text-blue-500" />
+                <span className="text-[7px] font-mono tracking-widest uppercase text-white">
+                  Verified
+                </span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-slate-800" />
+              <span className="text-[7px] font-mono text-blue-500/80 font-bold">
+                Node_v20.x
               </span>
             </div>
           </div>
+
+          {/* Corner Brackets */}
+          <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-white/10 rounded-tl-[2.5rem]" />
+          <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-white/10 rounded-br-[2.5rem]" />
         </motion.div>
       </div>
 
-      {/* Side Decorative Text */}
-      <div className="absolute right-10 bottom-10 hidden 2xl:block">
-        <p className="[writing-mode:vertical-lr] text-[8px] tracking-[1em] text-slate-700 uppercase font-bold">
-          Innovation in every commit
-        </p>
-      </div>
+      {/* Background Texture */}
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
     </section>
   );
 }
