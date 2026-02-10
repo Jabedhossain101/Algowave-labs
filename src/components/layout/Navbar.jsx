@@ -39,9 +39,9 @@ export default function AdvancedNavbar() {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 group cursor-pointer shrink-0"
         >
-          <div className="relative flex h-4 w-4">
+          <div className="relative flex h-10 w-10">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-40"></span>
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-blue-600 border border-blue-400/50 shadow-[0_0_15px_#3b82f6]"></span>
+           <img src="/logo.jpg" alt="" className='rounded-full'/>
           </div>
           <div className="text-xl md:text-2xl font-black text-white tracking-tighter flex items-center gap-1">
             AlgoWave<span className="text-blue-600 italic">.</span>Labs
