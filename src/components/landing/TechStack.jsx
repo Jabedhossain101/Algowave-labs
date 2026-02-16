@@ -74,126 +74,109 @@ const techStack = [
 
 export default function AdvancedTechStack() {
   return (
-    <section className="relative py-24 bg-[#050505] overflow-hidden border-y border-white/5">
-      {/* --- BACKGROUND DEPTH --- */}
+    <section className="relative py-20 bg-[#050505] overflow-hidden border-y border-white/5">
+      {/* BACKGROUND DEPTH - Reduced blur for mobile */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full opacity-60" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[400px] bg-gradient-to-b from-blue-500/[0.05] to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-blue-600/10 blur-[80px] md:blur-[120px] rounded-full opacity-60" />
 
-        {/* Perspective Grid Sync */}
+        {/* Perspective Grid - Disabled on mobile, only desktop */}
         <div
-          className="absolute inset-0 opacity-[0.1]"
+          className="absolute inset-0 opacity-[0.07] hidden md:block"
           style={{
             backgroundImage: `linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)`,
             backgroundSize: '60px 60px',
             transform:
               'perspective(1000px) rotateX(60deg) translateY(-100px) scale(2)',
-            willChange: 'transform',
           }}
         />
       </div>
 
-      {/* --- CONTENT WRAPPER (Full Width Sync) --- */}
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-20">
-        {/* --- HEADER --- */}
-        <div className="flex flex-col items-center mb-24 text-center">
+        <div className="flex flex-col items-center mb-16 md:mb-24 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="flex items-center gap-3 mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10"
           >
-            <Activity size={12} className="text-blue-400 animate-pulse" />
+            <Activity size={12} className="text-blue-400 md:animate-pulse" />
             <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-blue-400/90">
               Technical Infrastructure
             </span>
           </motion.div>
 
-          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[1.1]">
+          <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tighter leading-[1.1]">
             POWERING NEXT-GEN <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white/40 italic font-light tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white/40 italic font-light">
               SYSTEM MATRIX.
             </span>
           </h2>
         </div>
 
-        {/* --- TECH GRID --- */}
+        {/* TECH GRID - Mobile performance focus */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {techStack.map((tech, index) => (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              whileHover={{ y: -8 }}
-              className="group relative p-7 rounded-[2.5rem] border border-white/10 bg-[#0A0A0A]/50 backdrop-blur-xl hover:border-blue-500/40 transition-all duration-500 ease-out overflow-hidden"
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.4, delay: index * 0.03 }}
+              // Hover only on desktop
+              whileHover={{ y: -5 }}
+              className="group relative p-6 md:p-7 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-[#0A0A0A]/50 md:backdrop-blur-xl transition-all duration-300 overflow-hidden"
             >
-              {/* Card Meta Info */}
-              <div className="flex justify-between items-start mb-8">
+              <div className="flex justify-between items-start mb-6 md:mb-8">
                 <div
-                  className={`p-3 rounded-xl bg-black border border-white/5 transition-all duration-500 ${tech.color} ${tech.glow} opacity-90 group-hover:opacity-100 group-hover:scale-110 shadow-lg`}
+                  className={`p-3 rounded-xl bg-black border border-white/5 transition-all duration-300 ${tech.color} group-hover:scale-110 shadow-lg`}
                 >
                   {tech.icon}
                 </div>
-                <div className="text-[9px] font-mono text-white/20 group-hover:text-blue-500/50 transition-colors uppercase tracking-widest">
+                <div className="text-[9px] font-mono text-white/20 uppercase tracking-widest">
                   SECURE_NODE
                 </div>
               </div>
 
-              {/* Title & Version */}
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-white/90 group-hover:text-white transition-colors">
-                  {tech.name}
-                </h3>
+                <h3 className="text-xl font-bold text-white/90">{tech.name}</h3>
                 <div className="flex items-center gap-3">
                   <span
                     className={`text-[10px] font-mono uppercase tracking-widest ${tech.color} opacity-80`}
                   >
                     {tech.version}
                   </span>
-                  <div className="h-[1px] flex-1 bg-white/5 group-hover:bg-blue-500/20 transition-all" />
+                  <div className="h-[1px] flex-1 bg-white/5" />
                 </div>
               </div>
 
-              {/* Decorative Code Trace */}
-              <p className="mt-8 text-[9px] font-mono text-zinc-600 uppercase tracking-tighter group-hover:text-zinc-400 transition-colors">
-                // module_status: active_v4
-              </p>
-
-              {/* Subtle Bottom Glow */}
-              <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-blue-500/5 blur-[40px] rounded-full group-hover:bg-blue-500/10 transition-all" />
+              {/* Removed bottom glow on mobile for better FPS */}
+              <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-blue-500/5 blur-[30px] rounded-full hidden md:block" />
             </motion.div>
           ))}
         </div>
 
-        {/* --- PERFORMANCE SCROLLER --- */}
-        <div className="mt-32">
-          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-16" />
-
+        {/* PERFORMANCE SCROLLER - Optimized speed & elements */}
+        <div className="mt-24 md:mt-32">
+          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12 md:mb-16" />
           <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
             <motion.div
-              animate={{ x: [0, -2000] }}
-              transition={{ repeat: Infinity, duration: 50, ease: 'linear' }}
-              className="flex items-center gap-20 whitespace-nowrap"
+              animate={{ x: [0, -1000] }} // Reduced distance for faster calculation
+              transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
+              style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+              className="flex items-center gap-12 md:gap-20 whitespace-nowrap"
             >
-              {[...techStack, ...techStack, ...techStack].map((tech, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-6 group/scroll opacity-20 hover:opacity-100 transition-opacity"
-                >
-                  <span className="text-4xl font-black italic text-zinc-800 group-hover/scroll:text-white/20 transition-all uppercase tracking-tighter">
+              {[...techStack, ...techStack].map((tech, idx) => (
+                <div key={idx} className="flex items-center gap-6 opacity-20">
+                  <span className="text-3xl md:text-4xl font-black italic text-zinc-800 uppercase tracking-tighter">
                     {tech.name}
                   </span>
-                  <div className="w-2.5 h-2.5 rounded-full bg-blue-600/40 shadow-[0_0_12px_rgba(37,99,235,0.4)]" />
+                  <div className="w-2 h-2 rounded-full bg-blue-600/40" />
                 </div>
               ))}
             </motion.div>
           </div>
         </div>
       </div>
-
-      {/* Grainy Noise Overlay */}
-      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
     </section>
   );
 }
