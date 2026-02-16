@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   Quote,
@@ -48,14 +48,22 @@ const reviews = [
 
 export default function AdvancedTestimonials() {
   const containerRef = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
-  // Parallax optimized for performance
+  // Safety check for window to prevent Hydration Error
+  useEffect(() => {
+    const checkRes = () => setIsDesktop(window.innerWidth > 768);
+    checkRes();
+    window.addEventListener('resize', checkRes);
+    return () => window.removeEventListener('resize', checkRes);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
   });
 
-  const yValue = useTransform(scrollYProgress, [0, 1], [-40, 40]); // Reduced distance
+  const yValue = useTransform(scrollYProgress, [0, 1], [-40, 40]);
   const opacityValue = useTransform(
     scrollYProgress,
     [0, 0.2, 0.8, 1],
@@ -69,13 +77,10 @@ export default function AdvancedTestimonials() {
     >
       {/* --- BACKGROUND --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Parallax Orbs - Simplified on mobile */}
+        {/* Parallax Orbs - Hydration Safe */}
         <motion.div
           style={{
-            y:
-              typeof window !== 'undefined' && window.innerWidth > 768
-                ? yValue
-                : 0,
+            y: isDesktop ? yValue : 0,
             opacity: opacityValue,
           }}
           className="absolute top-0 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-600/[0.04] blur-[80px] md:blur-[150px] rounded-full"
@@ -86,7 +91,6 @@ export default function AdvancedTestimonials() {
           style={{
             backgroundImage: `linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)`,
             backgroundSize: '50px 50px',
-            // Reduced rotation for mobile to prevent layout thrashing
             transform:
               'perspective(1200px) rotateX(25deg) scale(1.2) translateY(50px)',
           }}
@@ -132,7 +136,7 @@ export default function AdvancedTestimonials() {
               transition={{ duration: 0.5, delay: index * 0.05 }}
               whileHover={{ y: -5 }}
               className="group relative p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 overflow-hidden"
-              style={{ transform: 'translateZ(0)' }} // GPU acceleration
+              style={{ transform: 'translateZ(0)' }}
             >
               <div className="flex justify-between items-start mb-8 md:mb-10">
                 <div className="p-3 md:p-4 bg-black border border-white/10 rounded-2xl group-hover:border-blue-500/30 transition-all">
