@@ -33,9 +33,9 @@ const values = [
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white selection:bg-blue-500/30 overflow-hidden">
-      {/* --- HERO SECTION: IDENTITY ARCHITECTURE --- */}
+     
       <section className="relative pt-40 pb-24 px-6 border-b border-white/5">
-        {/* Advanced Background: Mesh and Cyber Grid */}
+      
         <div className="absolute inset-0 z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-blue-600/10 blur-[130px] rounded-full" />
           <div className="absolute bottom-[10%] right-[-5%] w-[35%] h-[35%] bg-indigo-600/10 blur-[110px] rounded-full" />
@@ -112,7 +112,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* --- CORE VALUES: THE LOGIC GATE --- */}
       <section className="py-32 px-6">
         <div className="container mx-auto">
           <div className="text-center mb-24">
@@ -149,7 +148,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* --- TEAM STATUS SECTION --- */}
+     
       <section className="py-32 px-6 bg-[#0a0a0a]/50 border-t border-white/5">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-20">
