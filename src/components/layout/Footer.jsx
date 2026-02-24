@@ -166,7 +166,7 @@ const Footer = () => {
                   href="mailto:ops@algowave.labs"
                   className="text-xs md:text-sm text-slate-500 hover:text-white transition-colors font-mono"
                 >
-                  ops@algowave.labs
+                  algowave@gmail.com
                 </a>
               </li>
             </ul>
