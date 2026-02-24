@@ -18,6 +18,7 @@ export default function AdvancedNavbar() {
     { name: 'Home', href: '/' },
     { name: 'ERP Systems', href: '/erp' },
     { name: 'SaaS', href: '/saas' },
+    { name: 'Team', href: '/team' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },

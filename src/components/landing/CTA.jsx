@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react'; // Added useState, useEffect
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   ArrowRight,
@@ -13,13 +13,24 @@ import {
 
 export default function AdvancedCTA() {
   const containerRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // 1. Component mount hoyeche kina check kora (Hydration fix)
+  useEffect(() => {
+    setMounted(true);
+    const checkRes = () => setIsDesktop(window.innerWidth > 768);
+    checkRes();
+    window.addEventListener('resize', checkRes);
+    return () => window.removeEventListener('resize', checkRes);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start end', 'end start'],
   });
 
-  // Optimized transforms: only active on desktop
+  // Optimized transforms
   const yValue = useTransform(scrollYProgress, [0, 1], [-20, 20]);
   const glowOpacity = useTransform(
     scrollYProgress,
@@ -34,24 +45,23 @@ export default function AdvancedCTA() {
     >
       {/* --- BACKGROUND --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Parallax Glow - Reduced for mobile */}
+        {/* Parallax Glow - Hydration safe logic */}
         <motion.div
           style={{
-            y:
-              typeof window !== 'undefined' && window.innerWidth > 768
-                ? yValue
-                : 0,
+            // Server-e thakte 0 thakbe, client-e mount hole isDesktop check korbe
+            y: mounted && isDesktop ? yValue : 0,
             opacity: glowOpacity,
           }}
           className="absolute top-[-10%] right-[10%] w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-blue-600/[0.04] blur-[80px] md:blur-[120px] rounded-full"
         />
 
-        {/* Sync Perspective Grid - Optimized for mobile performance */}
+        {/* Sync Perspective Grid */}
         <div
           className="absolute inset-0 opacity-[0.03] md:opacity-[0.05]"
           style={{
             backgroundImage: `linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)`,
             backgroundSize: '40px 40px',
+            // transform condition remove kore static rakha better performance er jonno
             transform:
               'perspective(1000px) rotateX(45deg) translateY(50px) scale(1.5)',
             willChange: 'transform',
@@ -66,11 +76,10 @@ export default function AdvancedCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          // Backdrop blur optimized for mobile
           className="relative rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.02] border border-white/5 p-8 md:p-16 overflow-hidden"
           style={{ transform: 'translateZ(0)' }}
         >
-          {/* Internal Refraction - Subtle gradient instead of heavy blur */}
+          {/* Internal Refraction */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center text-center">
@@ -123,7 +132,7 @@ export default function AdvancedCTA() {
               </motion.button>
             </div>
 
-            {/* Metadata (Hidden on very small screens for better spacing) */}
+            {/* Metadata */}
             <div className="mt-12 hidden sm:flex items-center gap-6 opacity-40">
               <div className="flex items-center gap-2">
                 <ShieldCheck size={12} className="text-blue-500" />
@@ -145,7 +154,7 @@ export default function AdvancedCTA() {
             </div>
           </div>
 
-          {/* Corner Brackets - Optimized for mobile */}
+          {/* Corner Brackets */}
           <div className="absolute top-0 left-0 w-12 h-12 md:w-16 md:h-16 border-t border-l border-white/10 rounded-tl-[2rem] md:rounded-tl-[2.5rem]" />
           <div className="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16 border-b border-r border-white/10 rounded-br-[2rem] md:rounded-br-[2.5rem]" />
         </motion.div>
