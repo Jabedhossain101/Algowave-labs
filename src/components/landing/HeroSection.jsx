@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Activity,
 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function UltraAdvanceHero() {
   const [mounted, setMounted] = useState(false);
@@ -123,21 +124,29 @@ export default function UltraAdvanceHero() {
               variants={itemVariants}
               className="flex flex-wrap items-center gap-6"
             >
-              <motion.button
-                whileHover={{ scale: 1.05, backgroundColor: '#2563eb' }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-black font-bold text-sm tracking-tight rounded-full flex items-center gap-3 transition-colors duration-300 shadow-xl shadow-blue-500/10"
-              >
-                INITIATE PROJECT <Command size={18} />
-              </motion.button>
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: '#2563eb',
+                    color: '#fff',
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white text-black font-bold text-sm tracking-tight rounded-full flex items-center gap-3 transition-colors duration-300 shadow-xl shadow-blue-500/10"
+                >
+                  INITIATE PROJECT <Command size={18} />
+                </motion.button>
+              </Link>
 
-              <button className="flex items-center gap-2 text-sm font-bold tracking-widest text-white/50 hover:text-white transition-all group">
-                EXPLORE ARCHITECTURE
-                <ChevronRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </button>
+              <Link href='/portfolio'>
+                <button className="flex items-center gap-2 text-sm font-bold tracking-widest text-white/50 hover:text-white transition-all group">
+                  EXPLORE ARCHITECTURE
+                  <ChevronRight
+                    size={16}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </button>
+              </Link>
             </motion.div>
 
             {/* Micro Stats */}

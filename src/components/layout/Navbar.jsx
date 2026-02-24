@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight, Activity, Cpu } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AdvancedNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +43,7 @@ export default function AdvancedNavbar() {
         >
           <div className="relative flex h-10 w-10">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-40"></span>
-           <img src="/logo.jpg" alt="" className='rounded-full'/>
+            <img src="/logo.jpg" alt="" className="rounded-full" />
           </div>
           <div className="text-xl md:text-2xl font-black text-white tracking-tighter flex items-center gap-1">
             AlgoWave<span className="text-blue-600 italic">.</span>Labs
@@ -75,9 +76,12 @@ export default function AdvancedNavbar() {
             whileTap={{ scale: 0.95 }}
             className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-sm skew-x-[-12deg] flex items-center gap-3 transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)]"
           >
-            <span className="skew-x-[12deg] flex items-center gap-2 text-white">
-              INITIATE PROJECT <ArrowRight size={14} />
-            </span>
+            <Link href="/contact" className="skew-x-[12deg]">
+              <span className="skew-x-[12deg] flex items-center gap-2 text-white">
+                INITIATE PROJECT
+                <ArrowRight size={14} />
+              </span>
+            </Link>
           </motion.button>
         </div>
 
