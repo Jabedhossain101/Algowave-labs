@@ -154,7 +154,7 @@ const Footer = () => {
                   className="text-slate-700 shrink-0 group-hover:text-blue-500 transition-colors"
                 />
                 <span className="text-xs md:text-sm text-slate-500 leading-relaxed font-light">
-                  Innovation Plaza, Dhaka, BD
+                  Bashundhara, Dhaka, BD
                 </span>
               </li>
               <li className="flex items-center gap-4 md:gap-5">
