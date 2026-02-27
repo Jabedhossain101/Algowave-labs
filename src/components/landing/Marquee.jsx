@@ -74,7 +74,7 @@ export default function AdvancedMarquee() {
                   </span>
                 </span>
 
-                {/* Decorative Node Indicator - Mobile-e animation off kora hoyeche */}
+               
                 <div className="absolute -right-6 md:-right-14 top-1/2 -translate-y-1/2 flex items-center gap-1.5 opacity-10 group-hover/item:opacity-40 transition-all duration-500">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-600 md:animate-pulse" />
                   <div className="w-4 md:w-8 h-[1px] bg-gradient-to-r from-blue-600 to-transparent" />
