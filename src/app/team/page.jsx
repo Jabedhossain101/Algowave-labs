@@ -19,7 +19,7 @@ const team = [
     name: 'MD. Jabed Hossain',
     role: 'Full Stack Engineer',
     focus: 'SaaS Architecture',
-    status: 'LEAD_SYS_ADMIN',
+    status: 'CORE_ENGINEER',
     skills: ['Next.js', 'TypeScript', 'Prisma'],
     latency: '2ms',
     avatar:
