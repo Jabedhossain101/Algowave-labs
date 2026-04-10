@@ -125,7 +125,7 @@ export default function AdvancedContact() {
                   {
                     icon: <Mail size={20} />,
                     label: 'Data Protocol',
-                    val: 'ahmedrafsan101@gmail.com',
+                    val: 'algowavelabs.com',
                   },
                   {
                     icon: <Phone size={20} />,

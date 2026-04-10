@@ -23,16 +23,20 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { name: 'About Engineering', href: '/about' },
-      { name: 'Lab Careers', href: '/careers' },
-      { name: 'Tech Blog', href: '/blog' },
-      { name: 'Contact Hub', href: '/contact' },
+      { name: 'Home', href: '/home' },
+
+      { name: 'TEAM', href: '/team' },
+
+      { name: 'ABOUT', href: '/about' },
+      { name: 'BLOG', href: '/blog' },
+      { name: 'CONTACT', href: '/contact' },
     ],
     services: [
-      { name: 'Next.js Development', href: '/services/web-development' },
-      { name: 'SaaS Architecture', href: '/services/saas' },
-      { name: 'ERP Solutions', href: '/services/erp' },
-      { name: 'Cloud Infrastructure', href: '/services/cloud' },
+      { name: 'PORTFOLIO', href: '/portfolio' },
+      { name: 'SAAS', href: '/saas' },
+      { name: 'ERP SYSTEMS', href: '/erp' },
+
+      
     ],
     legal: [
       { name: 'Privacy', href: '/privacy' },
@@ -102,7 +106,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* NAVIGATION COLUMNS */}
           <div className="grid grid-cols-2 lg:grid-cols-4 lg:col-span-4 gap-8">
             <div className="space-y-6">
               <h3 className="text-[9px] md:text-[10px] font-black tracking-[0.4em] uppercase text-slate-700 flex items-center gap-2">
@@ -166,7 +169,7 @@ const Footer = () => {
                   href="mailto:ops@algowave.labs"
                   className="text-xs md:text-sm text-slate-500 hover:text-white transition-colors font-mono"
                 >
-                  ahmedrafsan101@gmail.com
+                  algowavelabs.com
                 </a>
               </li>
             </ul>
