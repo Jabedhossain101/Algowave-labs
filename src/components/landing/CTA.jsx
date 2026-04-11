@@ -126,8 +126,8 @@ export default function AdvancedCTA() {
                 whileTap={{ scale: 0.98 }}
                 className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 border border-white/10 rounded-xl text-slate-400 transition-all"
               >
-                <Command size={16} />
-                <Link href="/core-stack" className="skew-x-[12deg]">
+            
+                <Link href="/core-stack" className="flex items-center gap-2">
                   <span className="skew-x-[12deg] flex items-center gap-2 text-white">
                   Core Stack
                     <ArrowRight size={14} />

@@ -3,144 +3,120 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Target,
-  Cpu,
   Users2,
   ShieldCheck,
-  ArrowRight,
   Zap,
   Code2,
   Activity,
+  Cpu,
 } from 'lucide-react';
 
 const values = [
   {
     title: 'Engineering Excellence',
-    desc: "We don't just write code; we architect systems that are scalable, maintainable, and built on SOLID principles.",
+    desc: 'We design and develop scalable, maintainable systems following industry best practices and proven architectural patterns.',
     icon: <Code2 className="text-blue-400" />,
   },
   {
-    title: 'Mission Critical Reliability',
-    desc: 'Our software is the backbone of businesses. We ensure 99.9% uptime and enterprise-grade security protocol.',
+    title: 'Reliability & Security',
+    desc: 'Our solutions are built with a strong focus on performance, stability, and enterprise-grade security standards.',
     icon: <ShieldCheck className="text-indigo-400" />,
   },
   {
-    title: 'Client-Centric Innovation',
-    desc: 'Every line of code is written to solve a business problem and drive measurable growth for our partners.',
+    title: 'Business-Driven Innovation',
+    desc: 'We align technology with business goals to deliver impactful and measurable results for our clients.',
     icon: <Zap className="text-cyan-400" />,
   },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white selection:bg-blue-500/30 overflow-hidden">
-     
+    <main className="min-h-screen bg-[#050505] text-white overflow-hidden">
+      {/* HERO */}
       <section className="relative pt-40 pb-24 px-6 border-b border-white/5">
-      
         <div className="absolute inset-0 z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] bg-blue-600/10 blur-[130px] rounded-full" />
           <div className="absolute bottom-[10%] right-[-5%] w-[35%] h-[35%] bg-indigo-600/10 blur-[110px] rounded-full" />
         </div>
 
-        <div
-          className="absolute inset-0 opacity-[0.05] pointer-events-none"
-          style={{
-            backgroundImage: `linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)`,
-            backgroundSize: '40px 40px',
-            transform: 'perspective(1000px) rotateX(20deg) translateY(-50px)',
-          }}
-        />
-
         <div className="container mx-auto relative z-10 text-center md:text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8"
-          >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8">
             <Target size={14} className="text-blue-400" />
-            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-blue-400">
-              Our Studio Identity
+            <span className="text-[10px] uppercase tracking-[0.4em] text-blue-400">
+              About Us
             </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-8"
-          >
-            ENGINEERING <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-500">
-              THE FUTURE
-            </span>
-          </motion.h1>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-end mt-12">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-slate-400 text-lg md:text-xl font-light leading-relaxed"
-            >
-              AlgoWave Labs is a{' '}
-              <span className="text-white font-medium">
-                premier engineering studio
-              </span>{' '}
-              dedicated to pushing the boundaries of digital innovation. We
-              don't just build apps; we architect high-impact ecosystems that
-              redefine industrial standards.
-            </motion.p>
-
-            <div className="flex gap-8 justify-center md:justify-end border-l border-white/10 pl-8">
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-white tracking-tighter">
-                  50+
-                </span>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">
-                  Deployments
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-3xl font-black text-white tracking-tighter">
-                  98%
-                </span>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">
-                  Retention
-                </span>
-              </div>
-            </div>
           </div>
+
+          <h1 className="text-5xl md:text-8xl font-black mb-8">
+            ENGINEERING <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+              DIGITAL SOLUTIONS
+            </span>
+          </h1>
+
+          <p className="text-slate-400 max-w-2xl text-lg">
+            AlgoWave Labs builds scalable, high-performance software systems
+            designed to solve real-world business problems and drive measurable
+            impact.
+          </p>
         </div>
       </section>
 
-      <section className="py-32 px-6">
+      {/* TIMELINE */}
+      {/* WHAT WE DO / CAPABILITIES */}
+      <section className="py-32 px-6 border-t border-white/5">
         <div className="container mx-auto">
+          {/* Header */}
           <div className="text-center mb-24">
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4 uppercase">
-              CORE ARCHITECTURE
+              What We Do
             </h2>
             <p className="text-slate-500 text-sm tracking-[0.2em] font-bold uppercase">
-              The principles that drive every commit
+              Our core capabilities
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((value, idx) => (
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Web Application Development',
+                desc: 'We build scalable and high-performance web applications using modern technologies like React, Next.js, and Node.js.',
+              },
+              {
+                title: 'Backend & API Systems',
+                desc: 'Robust backend architectures with secure APIs, database design, and optimized server-side logic.',
+              },
+              {
+                title: 'UI/UX Engineering',
+                desc: 'Clean, intuitive, and user-focused interfaces designed to enhance user experience and engagement.',
+              },
+              {
+                title: 'Cloud & Deployment',
+                desc: 'Deploying and managing applications on cloud platforms with scalability and reliability in mind.',
+              },
+              {
+                title: 'Performance Optimization',
+                desc: 'Improving speed, scalability, and efficiency of existing systems to ensure smooth user experience.',
+              },
+              {
+                title: 'Custom Software Solutions',
+                desc: 'Tailored software systems designed to meet unique business needs and workflows.',
+              },
+            ].map((item, i) => (
               <motion.div
-                key={idx}
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="group p-10 rounded-[40px] border border-white/5 bg-[#0a0a0a] hover:border-blue-500/30 transition-all duration-500"
+                transition={{ delay: i * 0.1 }}
+                className="group p-10 rounded-[32px] border border-white/5 bg-[#0a0a0a] hover:border-blue-500/30 transition-all duration-500"
               >
-                <div className="mb-10 p-5 w-fit rounded-2xl bg-white/5 border border-white/10 group-hover:bg-blue-500/10 transition-all">
-                  {value.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-400 transition-colors">
-                  {value.title}
+                <h3 className="text-xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-400 transition-colors">
+                  {item.title}
                 </h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  {value.desc}
+                  {item.desc}
                 </p>
               </motion.div>
             ))}
@@ -148,67 +124,134 @@ export default function AboutPage() {
         </div>
       </section>
 
-     
-      <section className="py-32 px-6 bg-[#0a0a0a]/50 border-t border-white/5">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-20">
-            <div className="flex-1">
-              <div className="inline-flex items-center gap-2 mb-6 text-blue-500">
-                <Users2 size={20} />
-                <span className="text-[10px] font-black tracking-[0.4em] uppercase">
-                  Human Capital
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-8">
-                ELITE SQUAD <br /> OF{' '}
-                <span className="text-slate-500 italic">ARCHITECTS.</span>
-              </h2>
-              <p className="text-slate-400 text-lg leading-relaxed mb-10">
-                Our team consists of senior engineers, product strategists, and
-                UI architects who have built systems for global scale. We
-                operate like an elite lab, where every project is a challenge to
-                push technology further.
-              </p>
-              <button className="group flex items-center gap-4 px-10 py-5 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-blue-600 hover:text-white transition-all">
-                Join the Lab{' '}
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </button>
+      {/* VALUES */}
+      <section className="py-32 px-6">
+        <div className="container mx-auto grid md:grid-cols-3 gap-8">
+          {values.map((v, i) => (
+            <div key={i} className="p-8 border border-white/5 rounded-3xl">
+              {v.icon}
+              <h3 className="text-xl font-bold mt-4">{v.title}</h3>
+              <p className="text-slate-400 text-sm mt-2">{v.desc}</p>
             </div>
+          ))}
+        </div>
+      </section>
 
-            {/* Visual Stat Card */}
-            <div className="flex-1 w-full grid grid-cols-2 gap-4">
-              {[
-                { label: 'Frontend Lab', stat: 'React / Next' },
-                { label: 'Backend Lab', stat: 'Node / Go' },
-                { label: 'DevOps Lab', stat: 'AWS / Docker' },
-                { label: 'AI Lab', stat: 'Python / Logic' },
-              ].map((lab, i) => (
-                <div
+      {/* TEAM (UPDATED) */}
+      <section className="py-32 px-6 bg-[#030303] border-t border-white/5">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+            <h2 className="text-5xl font-bold uppercase">
+              Expert Team of <span className="text-white/30">Engineers</span>
+            </h2>
+
+            <p className="text-slate-500 max-w-sm text-sm">
+              A team of skilled engineers working across frontend, backend, and
+              cloud systems to deliver production-ready solutions.
+            </p>
+          </div>
+
+          {/* Tech badges */}
+          <div className="flex flex-wrap gap-3 mb-16">
+            {['React', 'Next.js', 'Node.js', 'MongoDB', 'AWS', 'Docker'].map(
+              (t, i) => (
+                <span
                   key={i}
-                  className="p-8 rounded-[32px] border border-white/5 bg-[#050505] flex flex-col justify-between aspect-square hover:border-blue-500/20 transition-all"
+                  className="px-4 py-2 text-xs border border-white/10 rounded-full text-slate-400"
                 >
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">
-                    {lab.label}
-                  </span>
-                  <span className="text-xl font-black text-white tracking-tighter italic">
-                    {lab.stat}
-                  </span>
-                </div>
-              ))}
+                  {t}
+                </span>
+              ),
+            )}
+          </div>
+
+          {/* Team cards */}
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              {
+                name: 'MD. Jabed Hossain',
+                role: 'Full Stack Engineer',
+                img: 'https://i.ibb.co.com/twT6FyMG/Screenshot-2025-08-08-012445-removebg-preview-1.png',
+              },
+              {
+                name: 'Tazminur Rahman Tanim',
+                role: 'Backend Engineer',
+                img: 'https://i.ibb.co.com/qYQVSpKb/image.png',
+              },
+              {
+                name: 'Md. Adnan Wasti',
+                role: 'API Engineer',
+                img: 'https://i.ibb.co.com/xKZ1Sv6y/image.png',
+              },
+              {
+                name: 'Naeem Haider',
+                role: 'DevOps Engineer',
+                img: 'https://i.ibb.co.com/G4Nds0qf/image.png',
+              },
+            ].map((m, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -5 }}
+                className="p-6 border border-white/5 rounded-3xl text-center"
+              >
+                <img
+                  src={m.img}
+                  className="w-24 h-24 rounded-full mx-auto mb-4"
+                />
+                <h3 className="font-bold">{m.name}</h3>
+                <p className="text-xs text-slate-500">{m.role}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* bottom info */}
+          <div className="mt-16 flex justify-center gap-10 opacity-30">
+            <div className="flex items-center gap-2">
+              <Cpu size={14} />
+              <span className="text-xs">TEAM_EFFICIENCY: 100%</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <ShieldCheck size={14} />
+              <span className="text-xs">SECURE_WORKFLOW</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Side Decorative Element */}
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden 2xl:flex flex-col items-center gap-8 opacity-20">
-        <div className="flex items-center gap-2 text-blue-500">
-          <Activity size={14} className="animate-pulse" />
-          <span className="text-[8px] font-black tracking-[1.5em] text-slate-500 uppercase">
-            System Identity: Verified
-          </span>
+      {/* CTA */}
+      <section className="py-32 px-6 border-t border-white/5 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Let’s Build Something
+            <span className="block text-blue-400">Great Together</span>
+          </h2>
+
+          <p className="text-slate-400 mb-10">
+            Have an idea or project? Our team is ready to help you design,
+            develop, and scale your product.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="/contact"
+              className="px-8 py-4 bg-blue-600 rounded-xl text-sm font-bold"
+            >
+              Hire Us
+            </a>
+            <a
+              href="/contact"
+              className="px-8 py-4 border border-white/10 rounded-xl text-sm"
+            >
+              Contact
+            </a>
+          </div>
         </div>
-        <div className="w-[1px] h-32 bg-gradient-to-b from-blue-500 to-transparent" />
+      </section>
+
+      {/* Side Indicator */}
+      <div className="absolute right-10 top-1/2 hidden 2xl:flex flex-col items-center gap-6 opacity-20">
+        <Activity size={14} className="animate-pulse text-blue-400" />
+        <div className="w-[1px] h-24 bg-gradient-to-b from-blue-500 to-transparent" />
       </div>
     </main>
   );

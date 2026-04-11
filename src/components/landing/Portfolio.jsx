@@ -56,7 +56,6 @@ export const allProjects = [
     gradient: 'from-emerald-600/30 via-emerald-500/5 to-transparent',
     status: 'Deployed',
     liveUrl: 'https://bogurabashi.com',
-    // Verified community interaction / village gathering in Bangladesh
     imageUrl: 'https://i.ibb.co.com/FtZk9yg/image.png',
   },
   {
