@@ -45,12 +45,12 @@ export default function AdvancedNavbar() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-40"></span>
             <img src="/logo.jpg" alt="" className="rounded-full" />
           </div>
-          <div className="text-xl md:text-2xl font-black text-white tracking-tighter flex items-center gap-1">
+          <Link href={'/'} className="text-xl md:text-2xl font-black text-white tracking-tighter flex items-center gap-1">
             AlgoWave<span className="text-blue-600 italic">.</span>Labs
             <span className="text-[8px] font-mono text-slate-400 bg-white/5 px-1.5 py-0.5 rounded border border-white/10 ml-2 hidden sm:block">
               v4.0
             </span>
-          </div>
+          </Link>
         </motion.div>
 
         {/* --- DESKTOP NAV --- */}

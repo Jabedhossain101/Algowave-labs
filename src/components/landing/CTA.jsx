@@ -109,27 +109,30 @@ export default function AdvancedCTA() {
               <motion.button
                 whileHover={{ scale: 1.02, backgroundColor: '#2563eb' }}
                 whileTap={{ scale: 0.98 }}
-                className="group w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-xl transition-all"
+                className="group w-full sm:w-auto"
               >
-                <Calendar size={16} />
-                <span className="text-[10px] font-black tracking-widest uppercase">
-                  Initiate Deployment
-                </span>
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 text-white rounded-xl transition-all w-full"
+                >
+                  <Calendar size={16} />
+                  <span className="text-[10px] font-black tracking-widest uppercase">
+                    Initiate Deployment
+                  </span>
+                  <ArrowRight
+                    size={16}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </Link>
               </motion.button>
-
               <motion.button
                 whileHover={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 border border-white/10 rounded-xl text-slate-400 transition-all"
               >
-            
                 <Link href="/core-stack" className="flex items-center gap-2">
                   <span className="skew-x-[12deg] flex items-center gap-2 text-white">
-                  Core Stack
+                    Core Stack
                     <ArrowRight size={14} />
                   </span>
                 </Link>
