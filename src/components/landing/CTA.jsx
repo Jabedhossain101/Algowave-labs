@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   Cpu,
 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AdvancedCTA() {
   const containerRef = useRef(null);
@@ -126,9 +127,12 @@ export default function AdvancedCTA() {
                 className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 border border-white/10 rounded-xl text-slate-400 transition-all"
               >
                 <Command size={16} />
-                <span className="text-[10px] font-black tracking-widest uppercase">
+                <Link href="/core-stack" className="skew-x-[12deg]">
+                  <span className="skew-x-[12deg] flex items-center gap-2 text-white">
                   Core Stack
-                </span>
+                    <ArrowRight size={14} />
+                  </span>
+                </Link>
               </motion.button>
             </div>
 

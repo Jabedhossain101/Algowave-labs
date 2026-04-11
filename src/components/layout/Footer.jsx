@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -19,14 +19,18 @@ import {
 } from 'lucide-react';
 
 const Footer = () => {
+  // Use state to track mounting to prevent hydration mismatch
+  const [isMounted, setIsMounted] = useState(false);
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const footerLinks = {
     company: [
       { name: 'Home', href: '/home' },
-
       { name: 'TEAM', href: '/team' },
-
       { name: 'ABOUT', href: '/about' },
       { name: 'BLOG', href: '/blog' },
       { name: 'CONTACT', href: '/contact' },
@@ -35,14 +39,20 @@ const Footer = () => {
       { name: 'PORTFOLIO', href: '/portfolio' },
       { name: 'SAAS', href: '/saas' },
       { name: 'ERP SYSTEMS', href: '/erp' },
-
-      
     ],
     legal: [
       { name: 'Privacy', href: '/privacy' },
       { name: 'Terms', href: '/terms' },
       { name: 'Security', href: '/security' },
     ],
+  };
+
+  // Determine transform safely
+  const getTransform = () => {
+    if (isMounted && window.innerWidth > 768) {
+      return 'perspective(1000px) rotateX(45deg) translateY(100px)';
+    }
+    return 'none';
   };
 
   return (
@@ -56,10 +66,7 @@ const Footer = () => {
           style={{
             backgroundImage: `linear-gradient(#3b82f6 1px, transparent 1px), linear-gradient(90deg, #3b82f6 1px, transparent 1px)`,
             backgroundSize: '60px 60px',
-            transform:
-              typeof window !== 'undefined' && window.innerWidth > 768
-                ? 'perspective(1000px) rotateX(45deg) translateY(100px)'
-                : 'none',
+            transform: getTransform(),
           }}
         />
       </div>
