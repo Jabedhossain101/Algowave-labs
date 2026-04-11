@@ -189,17 +189,6 @@ const Footer = () => {
             <p className="text-slate-700 text-[8px] md:text-[10px] font-mono tracking-widest uppercase">
               © {currentYear} ALGOWAVE LABS // ENGINE_V4.0
             </p>
-            <div className="flex gap-6 md:gap-8">
-              {footerLinks.legal.map(link => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-slate-700 hover:text-blue-500 transition-colors font-bold"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
           </div>
 
           <div className="flex items-center gap-3 px-4 py-1.5 rounded-full bg-blue-500/5 border border-blue-500/10">
