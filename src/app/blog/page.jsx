@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import {
-  ArrowUpRight,
+  // ArrowUpRight,
   ShieldCheck,
   Zap,
   Cpu,
@@ -283,9 +283,9 @@ export default function BlogPage() {
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors" />
 
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
-                      <div className="p-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl">
+                      {/* <div className="p-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full shadow-2xl">
                         <ArrowUpRight size={28} className="text-white" />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
