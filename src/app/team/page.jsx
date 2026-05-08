@@ -16,6 +16,19 @@ import {
 
 const team = [
   {
+    name: 'Tazminur Rahman Tanim',
+    role: 'Full Stack Engineer',
+    focus: 'Backend Systems',
+    status: 'CORE_ENGINEER',
+    skills: ['SQL', 'Postgres', 'Docker'],
+    latency: '4ms',
+    avatar: 'https://i.ibb.co.com/qYQVSpKb/image.png',
+    github: 'https://github.com/tazminur12',
+    linkedin: 'https://www.linkedin.com/in/tazminur-rahman-tanim-305315336/',
+    accent: 'from-indigo-600/30',
+    glow: 'shadow-indigo-500/20',
+  },
+  {
     name: 'MD. Jabed Hossain',
     role: 'Full Stack Engineer',
     focus: 'SaaS Architecture',
@@ -28,19 +41,6 @@ const team = [
     linkedin: 'https://www.linkedin.com/in/mdjabedhossain12',
     accent: 'from-blue-600/30',
     glow: 'shadow-blue-500/20',
-  },
-  {
-    name: 'Tazminur Rahman Tanim',
-    role: 'Full Stack Engineer',
-    focus: 'Backend Systems',
-    status: 'CORE_ENGINEER',
-    skills: ['SQL', 'Postgres', 'Docker'],
-    latency: '4ms',
-    avatar: 'https://i.ibb.co.com/qYQVSpKb/image.png',
-    github: 'https://github.com/tazminur12',
-    linkedin: 'https://www.linkedin.com/in/tazminur-rahman-tanim-305315336/',
-    accent: 'from-indigo-600/30',
-    glow: 'shadow-indigo-500/20',
   },
   {
     name: 'Md. Adnan Wasti',
